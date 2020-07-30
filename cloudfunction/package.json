@@ -1,0 +1,30 @@
+{
+  "name": "cloudfunction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "functions-framework --target=reform",
+    "compile": "npx tsc index.ts",
+    "deploy": "gcloud functions deploy reform --entry-point reform --runtime nodejs12 --region asia-northeast1 --trigger-http --memory=1024MB --timeout=120s --allow-unauthenticated",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.23",
+    "@types/node-fetch": "^2.5.7",
+    "@types/puppeteer": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "eslint": "^7.5.0",
+    "node-fetch": "^2.6.0",
+    "puppeteer": "^5.2.1",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.7"
+  }
+}
