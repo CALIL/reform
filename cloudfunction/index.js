@@ -44,7 +44,7 @@ exports.reform = function (req, res) { return __awaiter(_this, void 0, void 0, f
                 res.set('Access-Control-Allow-Methods', 'GET, HEAD');
                 url = req.query.url;
                 if (!url.match(/^https:\/\/docs.google.com.*?viewform/)) {
-                    res.status(500).end();
+                    res.status(500).send('URLが正しくありません。').end();
                     return [2 /*return*/];
                 }
                 return [4 /*yield*/, main(url)];
@@ -57,7 +57,7 @@ exports.reform = function (req, res) { return __awaiter(_this, void 0, void 0, f
 }); };
 var puppeteer = require('puppeteer');
 var main = function (url) { return __awaiter(_this, void 0, void 0, function () {
-    var browser, page, action, inputs, data;
+    var browser, page, action, inputs, labels, params, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, puppeteer.launch()];
@@ -76,19 +76,32 @@ var main = function (url) { return __awaiter(_this, void 0, void 0, function () 
                     })];
             case 4:
                 action = _a.sent();
-                console.log(action);
                 return [4 /*yield*/, page.evaluate(function () {
                         var nodes = document.querySelectorAll('form input');
                         return Array.from(nodes).map(function (input) { return input.name; }).filter(function (input) { return input.match(/^entry/); });
                     })];
             case 5:
                 inputs = _a.sent();
+                return [4 /*yield*/, page.evaluate(function () {
+                        var nodes = document.querySelectorAll('form .exportItemTitle');
+                        return Array.from(nodes).map(function (label) { return label.innerText.replace(/ \*$/, ''); });
+                    })];
+            case 6:
+                labels = _a.sent();
+                return [4 /*yield*/, page.evaluate(function () {
+                        var nodes = document.querySelectorAll('div[data-params]');
+                        return Array.from(nodes).map(function (node) { return node.getAttribute('data-params'); });
+                    })];
+            case 7:
+                params = _a.sent();
                 data = {
                     action: action,
-                    inputs: inputs
+                    labels: labels,
+                    inputs: inputs,
+                    params: params
                 };
                 return [4 /*yield*/, browser.close()];
-            case 6:
+            case 8:
                 _a.sent();
                 return [2 /*return*/, data];
         }
