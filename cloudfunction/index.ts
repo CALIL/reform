@@ -8,42 +8,43 @@ exports.reform = async (req, res) => {
     }
     const data = await main(url)
     res.send(data);
-    // res.send('Hello World!');
 };
 
-const puppeteer = require('puppeteer') 
+import fetch from 'node-fetch';
+const jsdom = require('jsdom')
+
+const { JSDOM } = jsdom;
 
 const main = async (url: string) => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
 
-    await page.goto(url, { waitUntil: 'networkidle0' });
-    const action = await page.evaluate(() => {
-        const form = document.querySelector('form')
-        if (form !== null) return form.action
-    })
+    const res = await fetch(url);
+    const html = await res.text();
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
 
-    const inputs = await page.evaluate(() => {
-        const nodes: NodeListOf<HTMLInputElement> = document.querySelectorAll('form input')
-        return Array.from(nodes).map(input => input.name).filter((input) => input.match(/^entry/))
-    })
+    const form = document.querySelector('form')
+    const action = form.action
 
-    const labels = await page.evaluate(() => {
-        const nodes: NodeListOf<HTMLInputElement> = document.querySelectorAll('form .exportItemTitle')
-        return Array.from(nodes).map(label => label.innerText.replace(/ \*$/, ''))
-    })
+    const paramNodes: NodeListOf<HTMLInputElement> = document.querySelectorAll('div[data-params]')
+    const params = Array.from(paramNodes).map(node => node.getAttribute('data-params'))
 
-    const params = await page.evaluate(() => {
-        const nodes: NodeListOf<HTMLInputElement> = document.querySelectorAll('div[data-params]')
-        return Array.from(nodes).map(node => node.getAttribute('data-params'))
+    const comparison = params.map((param) => {
+        param = JSON.parse(param.replace('%.@.', '['))
+        const key = param[0][1]
+        const value = 'entry.' + param[0][4][0][0]
+        let result = {}
+        result[key] = value
+        return result
     })
 
     const data = {
         action: action,
-        labels: labels,
-        inputs: inputs,
-        params: params
+        params: params,
+        comparison: comparison
     }
-    await browser.close();
     return data
 }
+
+(async () => {
+    console.log(await main('https://docs.google.com/forms/d/e/1FAIpQLSfNzaEDWldsbWqS5DQOK2sZCxGbXd6dwLqG5---K-vaBZE2Zw/viewform'))
+})()

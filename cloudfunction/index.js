@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,8 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
-exports.reform = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+exports.__esModule = true;
+exports.reform = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var url, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -55,55 +56,52 @@ exports.reform = function (req, res) { return __awaiter(_this, void 0, void 0, f
         }
     });
 }); };
-var puppeteer = require('puppeteer');
-var main = function (url) { return __awaiter(_this, void 0, void 0, function () {
-    var browser, page, action, inputs, labels, params, data;
+var node_fetch_1 = require("node-fetch");
+var jsdom = require('jsdom');
+var JSDOM = jsdom.JSDOM;
+var main = function (url) { return __awaiter(void 0, void 0, void 0, function () {
+    var res, html, dom, document, form, action, paramNodes, params, comparison, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, puppeteer.launch()];
+            case 0: return [4 /*yield*/, node_fetch_1["default"](url)];
             case 1:
-                browser = _a.sent();
-                return [4 /*yield*/, browser.newPage()];
+                res = _a.sent();
+                return [4 /*yield*/, res.text()];
             case 2:
-                page = _a.sent();
-                return [4 /*yield*/, page.goto(url, { waitUntil: 'networkidle0' })];
-            case 3:
-                _a.sent();
-                return [4 /*yield*/, page.evaluate(function () {
-                        var form = document.querySelector('form');
-                        if (form !== null)
-                            return form.action;
-                    })];
-            case 4:
-                action = _a.sent();
-                return [4 /*yield*/, page.evaluate(function () {
-                        var nodes = document.querySelectorAll('form input');
-                        return Array.from(nodes).map(function (input) { return input.name; }).filter(function (input) { return input.match(/^entry/); });
-                    })];
-            case 5:
-                inputs = _a.sent();
-                return [4 /*yield*/, page.evaluate(function () {
-                        var nodes = document.querySelectorAll('form .exportItemTitle');
-                        return Array.from(nodes).map(function (label) { return label.innerText.replace(/ \*$/, ''); });
-                    })];
-            case 6:
-                labels = _a.sent();
-                return [4 /*yield*/, page.evaluate(function () {
-                        var nodes = document.querySelectorAll('div[data-params]');
-                        return Array.from(nodes).map(function (node) { return node.getAttribute('data-params'); });
-                    })];
-            case 7:
-                params = _a.sent();
+                html = _a.sent();
+                dom = new JSDOM(html);
+                document = dom.window.document;
+                form = document.querySelector('form');
+                action = form.action;
+                paramNodes = document.querySelectorAll('div[data-params]');
+                params = Array.from(paramNodes).map(function (node) { return node.getAttribute('data-params'); });
+                comparison = params.map(function (param) {
+                    param = JSON.parse(param.replace('%.@.', '['));
+                    var key = param[0][1];
+                    var value = 'entry.' + param[0][4][0][0];
+                    var result = {};
+                    result[key] = value;
+                    return result;
+                });
                 data = {
                     action: action,
-                    labels: labels,
-                    inputs: inputs,
-                    params: params
+                    params: params,
+                    comparison: comparison
                 };
-                return [4 /*yield*/, browser.close()];
-            case 8:
-                _a.sent();
                 return [2 /*return*/, data];
         }
     });
 }); };
+(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, _b;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0:
+                _b = (_a = console).log;
+                return [4 /*yield*/, main('https://docs.google.com/forms/d/e/1FAIpQLSfNzaEDWldsbWqS5DQOK2sZCxGbXd6dwLqG5---K-vaBZE2Zw/viewform')];
+            case 1:
+                _b.apply(_a, [_c.sent()]);
+                return [2 /*return*/];
+        }
+    });
+}); })();
