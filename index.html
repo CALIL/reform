@@ -95,7 +95,7 @@
             textarea.addEventListener('click', () => textarea.select());
             textarea.value = `<form action="${result.action}">
 ${inputs.join('\n')}
-    <button type="submit" name="button" value="送信"></button>
+    <button type="submit" name="button">送信</button>
 </form>`
             document.getElementById('result').appendChild(textarea);
         });
