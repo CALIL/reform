@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run compile && functions-framework --target=reform",
     "compile": "npx tsc index.ts",
-    "deploy": "npm run compile && gcloud functions deploy reform --entry-point reform --runtime nodejs12 --region asia-northeast1 --trigger-http --memory=1024MB --timeout=120s --allow-unauthenticated",
+    "deploy": "npm run compile && gcloud functions deploy reform --entry-point reform --runtime nodejs12 --region asia-northeast1 --trigger-http --memory=256MB --timeout=120s --allow-unauthenticated",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
