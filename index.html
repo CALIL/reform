@@ -84,7 +84,7 @@
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     table.appendChild(tr);
-                    inputs.push(`<label for="">${key}</label>
+                    inputs.push(`    <label for="">${key}</label>
     <input id="" type="text" name="${item[key]}" placeholder="">`)
                 }
             });
@@ -94,7 +94,7 @@
             const textarea = document.createElement('textarea');
             textarea.addEventListener('click', () => textarea.select());
             textarea.value = `<form action="${result.action}">
-    ${inputs.join('\n')}
+${inputs.join('\n')}
     <button type="submit" name="button" value="送信"></button>
 </form>`
             document.getElementById('result').appendChild(textarea);
