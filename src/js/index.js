@@ -1,11 +1,13 @@
 document.querySelector('form').addEventListener('submit', async (event) => {
     event.preventDefault();
+    document.querySelector('form button').disabled = true;
     let url = document.querySelector('form input').value;
     console.log(url)
-    if (!url.match(/^https:\/\/docs.google.com.*?viewform/)) {
+    if (!url.match(/^https:\/\/docs\.google.com.*?(viewform|edit)/)) {
         alert('urlが正しくありません。GoogleフォームのURLを入れてください。')
         return;
     }
+    url = url.replace('edit', 'viewform');
     url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + url;
     console.log(url)
     let percent = 10;
@@ -43,4 +45,5 @@ ${inputs.join('\n')}
 <button type="submit" name="button">送信</button>
 </form>`
     document.getElementById('result').appendChild(textarea);
+    document.querySelector('form button').disabled = false;
 });
