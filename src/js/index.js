@@ -17,6 +17,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     clearInterval(timer);
     console.log(result)
     const table = document.createElement('table');
+    table.className = 'active';
     let inputs = [];
     result.comparison.map((item) => {
         for (key in item) {
@@ -37,7 +38,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 
     const textarea = document.createElement('textarea');
     textarea.addEventListener('click', () => textarea.select());
-    textarea.value = `<form action="${result.action}">
+    textarea.value = `<form action="${result.action}" method="GET">
 ${inputs.join('\n')}
 <button type="submit" name="button">送信</button>
 </form>`
