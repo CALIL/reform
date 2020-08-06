@@ -4,15 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reform - Googleフォームを自由に</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
   </head>
-  <body>
-    <h1>Reform</h1>
+  <body><img class="logo" src="./assets/logo.svg" alt="">
+    <h1><img src="./assets/reform.svg" alt="Reform"></h1>
+    <h2>Googleフォームを自由に</h2>
     <form action="">
       <input type="text" name="" placeholder="GoogleフォームのURL" required="">
       <button>reform</button>
     </form>
-    <div id="result"></div>
+    <div id="result">
+      <ul>
+        <li>PRE-FIL</li>
+        <li class="active">POST</li>
+        <li>DETAIL</li>
+      </ul>
+      <textarea name="" cols="30" rows="10"></textarea>
+      <textarea class="active" name="" cols="30" rows="10"></textarea>
+      <table>
+        <tr>
+          <td>entry.911907324</td>
+          <td>ISBN</td>
+        </tr>
+        <tr>
+          <td>entry.863838798</td>
+          <td>本のタイトル</td>
+        </tr>
+        <tr>
+          <td>entry.2061790533</td>
+          <td>その他の情報</td>
+        </tr>
+        <tr>
+          <td>entry.1976949023</td>
+          <td>メールアドレス</td>
+        </tr>
+      </table>
+    </div>
+    <div id="description">
+      <h3><img src="./assets/about.svg" alt="About Reform"></h3>
+      <p>
+        Googleフォームの連携機能により、ウェブサイトとフォームをシームレスにつなぐことができます。<br />
+        連携するには、フィールドIDを調べる必要がありますが、このツールを使うと自動的にフィールドIDを抽出して、一般的なHTMLに変換できます。
+      </p>
+      <h3><img src="./assets/howtouse.svg" alt="How to use"></h3>
+      <p>GoogleフォームのURLをペーストしてから、「Reform」ボタンを押してください。</p>
+      <h3><img src="./assets/history.svg" alt="History"></h3>
+      <p><span>2020.8.6</span>公開</p>
+    </div>
     <script src="./js/index.js"></script>
   </body>
 </html>

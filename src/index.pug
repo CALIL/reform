@@ -4,11 +4,48 @@ html(lang="js")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Reform - Googleフォームを自由に
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="index.css")
   body
-    h1 Reform
+    img.logo(src="./assets/logo.svg", alt="")
+    h1
+      img(src="./assets/reform.svg", alt="Reform")
+    h2 Googleフォームを自由に
     form(action="")
       input(type="text" name="" placeholder="GoogleフォームのURL" required="")
       button reform
     #result
+      ul
+        li PRE-FIL
+        li.active POST
+        li DETAIL
+      textarea(name="", cols="30", rows="10")
+      textarea.active(name="", cols="30", rows="10")
+      table
+            tr
+              td entry.911907324
+              td ISBN
+            tr
+              td entry.863838798
+              td 本のタイトル
+            tr
+              td entry.2061790533
+              td その他の情報
+            tr
+              td entry.1976949023
+              td メールアドレス
+    #description
+      h3
+        img(src="./assets/about.svg", alt="About Reform")
+      p
+        | Googleフォームの連携機能により、ウェブサイトとフォームをシームレスにつなぐことができます。<br />
+        | 連携するには、フィールドIDを調べる必要がありますが、このツールを使うと自動的にフィールドIDを抽出して、一般的なHTMLに変換できます。
+      h3
+        img(src="./assets/howtouse.svg", alt="How to use")
+      p GoogleフォームのURLをペーストしてから、「Reform」ボタンを押してください。
+      h3
+        img(src="./assets/history.svg", alt="History")
+      p
+        span 2020.8.6
+        | 公開
     script(src="./js/index.js")

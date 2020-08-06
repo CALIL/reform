@@ -19,43 +19,89 @@
 html, body
     width: 100%
     height: 100%
-    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Noto Sans JP", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Noto Sans JP", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 
 body
   width: 800px
   margin: 0 auto
-
-h1
-  text-align: center
-
-input
-  width: calc(100% - 8rem)
-  padding: 1rem
-  border-radius: 5px
-  border: 1px solid #cccccc
-
-button
-  border-radius: 5px
-  border: 1px solid #cccccc
-  width: 5rem
-  height: 3rem
-
-#result
-  table
-    border-collapse: collapse
-    border: 1px solid #cccccc
-    line-height: 1.5
-    margin: 1rem 0
-
-    td
-      border: solid 1px #cccccc
-      font-size: 1.5rem
+  color: #ffffff
+  background-color: #0041C3
+  img.logo
+    display: block
+    width: 72px
+    height: 98px
+    margin: 0 auto
+  h1
+    text-align: center
+    img
+      width: 290px
+      height: 100px
+  h2
+    text-align: center
+    color: #ffffff
+  form
+    margin: 3rem 0 5rem
+    input
+      width: calc(100% - 8rem)
       padding: 1rem
+      border-bottom-left-radius: 25px
+      border-top-left-radius: 25px
+      border: 1px solid #cccccc
 
-  textarea
-    border-radius: 5px
-    border: 1px solid #cccccc
-    width: 100%
-    height: 20rem
-    font-size: 1rem
-    padding: 1rem
+    button
+      border-radius: 5px
+      border: 1px solid #cccccc
+      width: 5rem
+      height: 3rem
+
+  #result
+    ul
+      padding: 0
+      margin: 0
+      display: flex
+      justify-content: space-around
+      li
+        cursor: pointer
+        padding: 1rem
+        margin: 0
+        width: 100%
+        display: block
+        font-weight: bold
+        list-style: none
+        text-align: center
+        background-color: #002671
+        &.active
+          background-color: #000000
+    textarea
+      display: none
+      background-color: #000000
+      border-radius: 3px
+      border: none
+      width: 100%
+      height: 20rem
+      font-size: 1rem
+      padding: 1rem
+      &.active
+        display: block
+    table
+      display: none
+      border-collapse: collapse
+      border: 1px solid #cccccc
+      border-radius: 3px
+      line-height: 1.5
+      margin: 1rem 0
+      &.active
+        display: block
+      td
+        border: solid 1px #cccccc
+        font-size: 1.5rem
+        padding: 1rem
+
+  #description
+    h3
+      margin-top: 5rem
+      img
+        height: 30px
+    p
+      span
+        font-weight: 900
