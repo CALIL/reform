@@ -1,0 +1,33 @@
+.side
+    display: flex
+    +mobile
+      visibility: hidden
+    justify-content: space-between
+    align-items: center
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1
+    width: 100%
+    height: 100%
+    pointer-events: none
+    > div
+        font-weight: bold
+        transform: rotate(90deg)
+        > a
+          display: inline-block
+          color: #ffffff
+          transition: color .1s ease
+          text-decoration: none
+          line-height: 1
+          line-height: 16px
+          font-size: 16px
+          mix-blend-mode: lighten
+          pointer-events: auto
+          cursor: pointer
+          user-select: none
+        +tablet
+          &:nth-child(1)
+            text-indent: -50px
+          &:nth-child(2)
+            text-indent: -50px

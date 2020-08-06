@@ -7,45 +7,58 @@ html(lang="js")
     link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="index.css")
   body
-    img.logo(src="./assets/logo.svg", alt="")
-    h1
-      img(src="./assets/reform.svg", alt="Reform")
-    h2 Googleフォームを自由に
-    form(action="")
-      input(type="text" name="" placeholder="GoogleフォームのURL" required="")
-      button reform
-    #result
-      ul
-        li PRE-FIL
-        li.active POST
-        li DETAIL
-      textarea(name="", cols="30", rows="10")
-      textarea.active(name="", cols="30", rows="10")
-      table
-            tr
-              td entry.911907324
-              td ISBN
-            tr
-              td entry.863838798
-              td 本のタイトル
-            tr
-              td entry.2061790533
-              td その他の情報
-            tr
-              td entry.1976949023
-              td メールアドレス
-    #description
-      h3
-        img(src="./assets/about.svg", alt="About Reform")
-      p
-        | Googleフォームの連携機能により、ウェブサイトとフォームをシームレスにつなぐことができます。<br />
-        | 連携するには、フィールドIDを調べる必要がありますが、このツールを使うと自動的にフィールドIDを抽出して、一般的なHTMLに変換できます。
-      h3
-        img(src="./assets/howtouse.svg", alt="How to use")
-      p GoogleフォームのURLをペーストしてから、「Reform」ボタンを押してください。
-      h3
-        img(src="./assets/history.svg", alt="History")
-      p
-        span 2020.8.6
-        | 公開
+    main
+      article
+        img.logo(src="./assets/logo.svg", alt="")
+        h1
+          img(src="./assets/reform.svg", alt="Reform")
+        h2 Googleフォームを自由に
+        form(action="")
+          input(type="text" name="" placeholder="GoogleフォームのURLを入力" required="")
+          button Reform
+        #result
+          ul
+            li PRE-FIL
+            li.active POST
+            li DETAIL
+          textarea(name="", cols="30", rows="10")
+          textarea.active(name="", cols="30", rows="10")
+          table
+                tr
+                  td entry.911907324
+                  td ISBN
+                tr
+                  td entry.863838798
+                  td 本のタイトル
+                tr
+                  td entry.2061790533
+                  td その他の情報
+                tr
+                  td entry.1976949023
+                  td メールアドレス
+        #description
+          h3
+            img(src="./assets/about.svg", alt="About Reform")
+          hr
+          p
+            | Googleフォームの連携機能により、ウェブサイトとフォームをシームレスにつなぐことができます。<br />
+            | 連携するには、フィールドIDを調べる必要がありますが、このツールを使うと自動的にフィールドIDを抽出して、一般的なHTMLに変換できます。
+          h3
+            img(src="./assets/howtouse.svg", alt="How to use")
+          hr
+          p GoogleフォームのURLをペーストしてから、「Reform」ボタンを押してください。
+          h3
+            img(src="./assets/history.svg", alt="History")
+          hr
+          p
+            span 2020.8.6
+            | 公開
+        .poweredby
+          a(href="https://calil.jp", title="カーリル")
+            img(src="./assets/calil.svg", alt="Powered by カーリル")
+    nav.side
+      div
+          a(href="https://calil.jp") Powered by Calil.inc
+      div 
+          a(href="javascript:window.scrollTo({top: 0, behavior: 'smooth'});") BACK TO TOP
     script(src="./js/index.js")
