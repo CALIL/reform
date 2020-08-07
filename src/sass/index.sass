@@ -52,7 +52,6 @@ main
         /* バーの進捗率の表示を変える */
         &::-moz-progress-bar
           background-color: #18D100
-
         &::-webkit-progress-value
           background-color: #18D100
       button
@@ -103,16 +102,18 @@ main
       table
         display: none
         border-collapse: collapse
-        border: 1px solid #cccccc
         border-radius: 3px
         line-height: 1.5
         margin: 1rem 0
+        background-color: #000000
+        padding: 3rem
         &.active
           display: block
-        td
-          border: solid 1px #cccccc
-          font-size: 1.5rem
-          padding: 1rem
+        tr
+          th,td
+            border: solid 1px #cccccc
+            font-size: 1.5rem
+            padding: 1rem
 
     #description
       h3

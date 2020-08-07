@@ -6,6 +6,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     console.log(url)
     if (!url.match(/^https:\/\/docs\.google.com.*?(viewform|edit)/)) {
         alert('urlが正しくありません。GoogleフォームのURLを入れてください。')
+        document.querySelector('form button').disabled = false;
         return;
     }
     url = url.replace('edit', 'viewform');
@@ -16,13 +17,29 @@ document.querySelector('form').addEventListener('submit', async (event) => {
         document.querySelector('form progress').value = percent;
         percent += 1;
     }, 40);
+
     const result = await fetch(url).then((r) => r.json());
+    console.log(result)
+
     clearInterval(timer);
     document.querySelector('form progress').value = 100;
-    console.log(result)
+    document.getElementById('result').innerHTML = `<ul>
+    <li>PRE-FIL</li>
+    <li class="active">POST</li>
+    <li>DETAIL</li>
+</ul>`;
+
+   
     const table = document.createElement('table');
     table.className = 'active';
-    let inputs = [];
+    // const tr = document.createElement('tr');
+    // const th1 = document.createElement('th');
+    // const th2 = document.createElement('th');
+    // th1.innerHTML = 'id';
+    // th2.innerHTML = 'label';
+    // tr.appendChild(th1);
+    // tr.appendChild(th2);
+    // table.appendChild(tr);
     result.comparison.map((item) => {
         for (key in item) {
             const tr = document.createElement('tr');
@@ -33,20 +50,33 @@ document.querySelector('form').addEventListener('submit', async (event) => {
             tr.appendChild(td1);
             tr.appendChild(td2);
             table.appendChild(tr);
-            inputs.push(`    <label for="">${key}</label>
-<input id="" type="text" name="${item[key]}" placeholder="">`)
         }
     });
-    document.getElementById('result').innerHTML = '';
     document.getElementById('result').appendChild(table);
 
-    const textarea = document.createElement('textarea');
-    textarea.addEventListener('click', () => textarea.select());
-    textarea.value = `<form action="${result.action}" method="GET">
+    const createTextarea = (method, endpoint) => {
+        const textarea = document.createElement('textarea');
+        textarea.className = 'active';
+        textarea.addEventListener('click', () => textarea.select());
+    
+        let inputs = [];
+        result.comparison.map((item) => {
+            for (key in item) {
+                inputs.push(`    <label for="">${key}</label>
+    <input id="" type="text" name="${item[key]}" placeholder="">`)
+            }
+        });
+    
+        textarea.value = `<form action="${result.action.replace('formResponse', endpoint)}" method="${method}">
 ${inputs.join('\n')}
 <button type="submit" name="button">送信</button>
 </form>`
-    document.getElementById('result').appendChild(textarea);
+        document.getElementById('result').appendChild(textarea);
+    }
+
+    createTextarea('GET', 'viewform');
+    createTextarea('POST', 'formResponse');
+    
     document.querySelector('form progress').value = 0;
     document.querySelector('form button').disabled = false;
 });
