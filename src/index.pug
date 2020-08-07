@@ -13,9 +13,11 @@ html(lang="js")
         img.logo(src="./assets/logo.svg", alt="")
         h1
           img(src="./assets/reform.svg", alt="Reform")
-        h2 Googleフォームを自由に
+        h2 
+          a(href="https://docs.google.com/forms/u/0/", target="_blank") Googleフォーム
+          | を自由に
         form(action="")
-          input(type="text" name="" placeholder="GoogleフォームのURLを入力" required="")
+          input(type="text" name="" placeholder="GoogleフォームのURLを入力" required="" pattern="^https://docs.google.com.*?(viewform|edit)")
           progress(value="0", max="100")
           button Reform
         #result
