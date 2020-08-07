@@ -15,8 +15,8 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     let percent = 10;
     let timer = setInterval(() => {
         document.querySelector('form progress').value = percent;
-        percent += 1;
-    }, 40);
+        percent += 0.1;
+    }, 10);
 
     const result = await fetch(url).then((r) => r.json());
     console.log(result)
@@ -103,15 +103,18 @@ ${inputs.join('\n')}
     li1.addEventListener('click', clickTab);
     li2.addEventListener('click', clickTab);
     li3.addEventListener('click', clickTab);
+
+
+    const div = document.createElement('div');
     ul.appendChild(li1);
     ul.appendChild(li2);
     ul.appendChild(li3);
-    document.getElementById('result').appendChild(ul);
+    div.appendChild(ul);
 
-
-    document.getElementById('result').appendChild(textarea1);
-    document.getElementById('result').appendChild(textarea2);
-    document.getElementById('result').appendChild(table);
+    div.appendChild(textarea1);
+    div.appendChild(textarea2);
+    div.appendChild(table);
+    document.getElementById('result').appendChild(div);
     
     document.querySelector('form progress').value = 0;
     document.querySelector('form button').disabled = false;

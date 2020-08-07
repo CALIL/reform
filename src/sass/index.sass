@@ -5,6 +5,9 @@ main
     article
       width: 800px
       margin: 0 auto
+      +tablet
+        width: 100%
+        padding: 0 1rem
     img.logo
       display: block
       width: 72px
@@ -70,61 +73,63 @@ main
           background-color: #cccccc
 
     #result
-      ul
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: space-around
-        li
-          cursor: pointer
-          padding: 1rem
+      > div
+        animation: 1s fadeIn forwards
+        ul
+          padding: 0
           margin: 0
-          width: 100%
-          display: block
-          font-weight: bold
-          list-style: none
-          text-align: center
-          background-color: #002671
-          &:nth-child(1)
-            border-top-left-radius: 3px
-          &:nth-child(3)
-            border-top-right-radius: 3px
-          &.active
-            background-color: #000000
-      textarea
-        display: none
-        color: #ffffff
-        background-color: #000000
-        border-radius: 3px
-        border: none
-        width: 100%
-        height: 20rem
-        font-size: 1rem
-        padding: 3rem
-        &.active
-          display: block
-        &::selection
-          color: #000000
-          background-color: #ffffff 
-      table
-        display: none
-        border-collapse: collapse
-        border-radius: 3px
-        line-height: 1.5
-        margin: 1rem 0
-        background-color: #000000
-        padding: 3rem
-        margin: 0
-        &.active
-          display: block
-        tr
-          th,td
-            border: solid 1px #cccccc
-            font-size: 1.5rem
+          display: flex
+          justify-content: space-around
+          li
+            cursor: pointer
             padding: 1rem
-            &::selection
-              color: #000000
-              background-color: #ffffff 
+            margin: 0
+            width: 100%
+            display: block
+            font-weight: bold
+            list-style: none
+            text-align: center
+            background-color: #002671
+            &:nth-child(1)
+              border-top-left-radius: 3px
+            &:nth-child(3)
+              border-top-right-radius: 3px
+            &.active
+              background-color: #000000
+        textarea
+          display: none
+          color: #ffffff
+          background-color: #000000
+          border-radius: 3px
+          border: none
+          width: 100%
+          height: 20rem
+          font-size: 1rem
+          padding: 3rem
+          &.active
+            display: block
+          &::selection
+            color: #000000
+            background-color: #ffffff 
+        table
+          display: none
+          border-collapse: collapse
+          border-radius: 3px
+          line-height: 1.5
+          margin: 1rem 0
+          background-color: #000000
+          padding: 3rem
+          margin: 0
+          &.active
+            display: block
+          tr
+            th,td
+              border: solid 1px #cccccc
+              font-size: 1.5rem
+              padding: 1rem
+              &::selection
+                color: #000000
+                background-color: #ffffff 
 
     #description
       h3
@@ -146,3 +151,11 @@ main
       margin: 5rem
       img
         width: 204px
+
+
+@keyframes fadeIn
+  from
+    opacity: 0
+
+  to
+    opacity: 1
