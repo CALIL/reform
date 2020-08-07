@@ -55,6 +55,7 @@ main
         &::-webkit-progress-value
           background-color: #18D100
       button
+        cursor: pointer
         width: 14rem
         height: 3rem
         color: #ffffff
@@ -64,6 +65,9 @@ main
         border-top-right-radius: 25px
         border-bottom-right-radius: 25px
         border: none
+        &[disabled='']
+          cursor: auto
+          background-color: #cccccc
 
     #result
       ul
@@ -99,6 +103,9 @@ main
         padding: 3rem
         &.active
           display: block
+        &::selection
+          color: #000000
+          background-color: #ffffff 
       table
         display: none
         border-collapse: collapse
@@ -107,6 +114,7 @@ main
         margin: 1rem 0
         background-color: #000000
         padding: 3rem
+        margin: 0
         &.active
           display: block
         tr
@@ -114,6 +122,9 @@ main
             border: solid 1px #cccccc
             font-size: 1.5rem
             padding: 1rem
+            &::selection
+              color: #000000
+              background-color: #ffffff 
 
     #description
       h3

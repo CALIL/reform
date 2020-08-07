@@ -23,15 +23,10 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 
     clearInterval(timer);
     document.querySelector('form progress').value = 100;
-    document.getElementById('result').innerHTML = `<ul>
-    <li>PRE-FIL</li>
-    <li class="active">POST</li>
-    <li>DETAIL</li>
-</ul>`;
+    document.getElementById('result').innerHTML = '';
 
    
     const table = document.createElement('table');
-    table.className = 'active';
     // const tr = document.createElement('tr');
     // const th1 = document.createElement('th');
     // const th2 = document.createElement('th');
@@ -52,11 +47,9 @@ document.querySelector('form').addEventListener('submit', async (event) => {
             table.appendChild(tr);
         }
     });
-    document.getElementById('result').appendChild(table);
 
     const createTextarea = (method, endpoint) => {
         const textarea = document.createElement('textarea');
-        textarea.className = 'active';
         textarea.addEventListener('click', () => textarea.select());
     
         let inputs = [];
@@ -71,11 +64,54 @@ document.querySelector('form').addEventListener('submit', async (event) => {
 ${inputs.join('\n')}
 <button type="submit" name="button">送信</button>
 </form>`
-        document.getElementById('result').appendChild(textarea);
+        return textarea;
     }
+    const textarea1 = createTextarea('GET', 'viewform');
+    textarea1.className = 'active';
+    const textarea2 = createTextarea('POST', 'formResponse');
 
-    createTextarea('GET', 'viewform');
-    createTextarea('POST', 'formResponse');
+    const ul = document.createElement('ul')
+    const li1 = document.createElement('li')
+    const li2 = document.createElement('li')
+    const li3 = document.createElement('li')
+    li1.innerHTML = 'PRE-FIL';
+    li1.className = 'tab1 active';
+    li2.innerHTML = 'POST';
+    li2.className = 'tab2';
+    li3.innerHTML = 'DETAIL';
+    li3.className = 'tab3';
+    const clickTab = (event) => {
+        li1.classList.remove('active');
+        li2.classList.remove('active');
+        li3.classList.remove('active');
+        console.log(event.target.classList)
+        event.target.classList.add('active');
+
+        textarea1.classList.remove('active');
+        textarea2.classList.remove('active');
+        table.classList.remove('active');
+        if ([...event.target.classList].indexOf('tab1') > -1) {
+            textarea1.classList.add('active');
+        }
+        if ([...event.target.classList].indexOf('tab2') > -1) {
+            textarea2.classList.add('active');
+        }
+        if ([...event.target.classList].indexOf('tab3') > -1) {
+            table.classList.add('active');
+        }
+    }
+    li1.addEventListener('click', clickTab);
+    li2.addEventListener('click', clickTab);
+    li3.addEventListener('click', clickTab);
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    ul.appendChild(li3);
+    document.getElementById('result').appendChild(ul);
+
+
+    document.getElementById('result').appendChild(textarea1);
+    document.getElementById('result').appendChild(textarea2);
+    document.getElementById('result').appendChild(table);
     
     document.querySelector('form progress').value = 0;
     document.querySelector('form button').disabled = false;
