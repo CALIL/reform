@@ -3,24 +3,30 @@ html(lang="js")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Reform - Googleフォームを自由に
+    title Reform - Googleフォームの事前入力機能を便利に
     meta(name="viewport" content="width=device-width,initial-scale=1")
     link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="index.css")
     link(rel="alternate" href="https://reform.calil.dev/en/" hreflang="en-US")
     link(rel="alternate" href="https://reform.calil.dev" hreflang="ja-JP")
     link(rel="alternate" href="https://reform.calil.dev" hreflang="x-default")
-    meta(name="description" content="Googleフォームを自由に。")
+    meta(name="description" content="Googleフォームの事前入力機能を便利に。")
     meta(property="og:type" content="website")
     meta(property="og:site_name" content="Reform")
     meta(property="og:locale" content="ja_JP")
     meta(meta="" property="og:type" content="website")
-    meta(property="og:description" content="Googleフォームを自由に。")
+    meta(property="og:description" content="Googleフォームの事前入力機能を便利に。")
     meta(property="og:title" content="Reform")
     meta(property="og:url" content="https://reform.calil.dev")
     meta(property="og:image" content="https://reform.calil.dev/assets/image_ja.png")
     meta(name="keywords" content="Googleフォーム,Web,html,変換")
     meta(property="fb:app_id" content="270660792981320")
+    script(async="" src="https://www.googletagmanager.com/gtag/js?id=UA-32412597-11")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-32412597-11');
   body
     style.
       .englishNavigation {
@@ -50,11 +56,9 @@ html(lang="js")
         img.logo(src="./assets/logo.svg", alt="")
         h1
           img(src="./assets/reform.svg", alt="Reform")
-        h2 
-          a(href="https://docs.google.com/forms/u/0/", target="_blank") Googleフォーム
-          | を自由に
+        h2 Googleフォームの事前入力機能を便利に 
         form(action="")
-          input(type="text" name="" placeholder="GoogleフォームのURLを入力" required="" pattern="^https://docs.google.com.*?(viewform|edit)")
+          input(type="text" name="" placeholder="GoogleフォームのURLを入力" required="" pattern="https://docs.google.com.*?(viewform|edit).*?")
           progress(value="0", max="100")
           button Reform
         #result

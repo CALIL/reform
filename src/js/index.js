@@ -1,8 +1,15 @@
-document.querySelector('form').addEventListener('submit', async (event) => {
-    event.preventDefault();
+function getQueryString() {
+    var params = {}
+    location.search.substr(1).split('&').map(function(param) {
+        var pairs = param.split('=');
+        params[pairs[0]] = decodeURIComponent(pairs[1]);
+    });
+    return params;    
+}
+
+const reform = async (url) => {
     document.querySelector('form button').disabled = true;
 
-    let url = document.querySelector('form input').value;
     document.querySelector('form').setAttribute('data-url', url);
     url = url.replace('edit', 'viewform');
     url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + url;
@@ -13,7 +20,15 @@ document.querySelector('form').addEventListener('submit', async (event) => {
         percent += 0.1;
     }, 10);
 
-    const result = await fetch(url).then((r) => r.json());
+    const result = await fetch(url).then((r) => r.json()).catch((e) => {
+        console.log(e);
+        document.querySelector('form button').disabled = false;
+        clearInterval(timer);
+        alert('Error. Sorry.')
+        document.querySelector('form progress').value = 0;
+    });
+
+    if (!result) return;
 
     clearInterval(timer);
     document.querySelector('form progress').value = 100;
@@ -112,4 +127,16 @@ ${inputs.join('\n')}
     
     document.querySelector('form progress').value = 0;
     document.querySelector('form button').disabled = false;
+}
+
+const params = getQueryString();
+if (params.url) {
+    document.querySelector('form input').value = params.url;
+    reform(params.url);
+} 
+
+document.querySelector('form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const url = document.querySelector('form input').value;
+    reform(url);
 });
