@@ -62,7 +62,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     
         textarea.value = `<form action="${result.action.replace('formResponse', endpoint)}" method="${method}">
 ${inputs.join('\n')}
-<button type="submit" name="button">送信</button>
+    <button type="submit" name="button">送信</button>
 </form>`
         return textarea;
     }
