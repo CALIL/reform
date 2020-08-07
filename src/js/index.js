@@ -49,14 +49,14 @@ document.querySelector('form').addEventListener('submit', async (event) => {
         let inputs = [];
         result.comparison.map((item) => {
             for (key in item) {
-                inputs.push(`    <label for="">${key}</label>
-    <input id="" type="text" name="${item[key]}" placeholder="">`)
+                inputs.push(`    <label for="${item[key]}">${key}</label>
+    <input id="${item[key]}" type="text" name="${item[key]}">`)
             }
         });
     
         textarea.value = `<form action="${result.action.replace('formResponse', endpoint)}" method="${method}">
 ${inputs.join('\n')}
-    <button type="submit" name="button">送信</button>
+    <button type="submit">送信</button>
 </form>`
         return textarea;
     }
