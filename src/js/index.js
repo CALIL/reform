@@ -1,17 +1,12 @@
 document.querySelector('form').addEventListener('submit', async (event) => {
     event.preventDefault();
     document.querySelector('form button').disabled = true;
+
     let url = document.querySelector('form input').value;
     document.querySelector('form').setAttribute('data-url', url);
-    console.log(url)
-    if (!url.match(/^https:\/\/docs\.google.com.*?(viewform|edit)/)) {
-        alert('urlが正しくありません。GoogleフォームのURLを入れてください。')
-        document.querySelector('form button').disabled = false;
-        return;
-    }
     url = url.replace('edit', 'viewform');
     url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + url;
-    console.log(url)
+
     let percent = 10;
     let timer = setInterval(() => {
         document.querySelector('form progress').value = percent;
@@ -19,7 +14,6 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     }, 10);
 
     const result = await fetch(url).then((r) => r.json());
-    console.log(result)
 
     clearInterval(timer);
     document.querySelector('form progress').value = 100;
