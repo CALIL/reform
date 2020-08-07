@@ -11,7 +11,7 @@ const reform = async (url) => {
     document.querySelector('form button').disabled = true;
 
     document.querySelector('form').setAttribute('data-url', url);
-    url = url.replace('edit', 'viewform');
+    url = url.replace('edit', 'viewform').trim();
     url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + url;
 
     let percent = 10;
