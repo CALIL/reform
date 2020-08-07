@@ -10,8 +10,8 @@ function getQueryString() {
 const reform = async (url) => {
     document.querySelector('form button').disabled = true;
 
-    document.querySelector('form').setAttribute('data-url', url);
     url = url.replace('edit', 'viewform').trim();
+    history.pushState(null,null,location.pathname+'?url='+encodeURIComponent(url));
     url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + url;
 
     let percent = 10;
