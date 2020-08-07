@@ -1,0 +1,63 @@
+doctype html
+html(lang="js")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Reform - Google Forms at your disposal
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
+    link(rel="stylesheet", href="../index.css")
+    link(rel="alternate" href="https://reform.calil.dev/en/" hreflang="en-US")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="ja-JP")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="x-default")
+    meta(name="description" content="Google Forms at your disposal.")
+    meta(property="og:type" content="website")
+    meta(property="og:site_name" content="Reform")
+    meta(property="og:locale" content="ja_JP")
+    meta(meta="" property="og:type" content="website")
+    meta(property="og:description" content="Google Forms at your disposal.")
+    meta(property="og:title" content="Reform")
+    meta(property="og:url" content="https://reform.calil.dev")
+    meta(property="og:image" content="https://reform.calil.dev/assets/reform.svg")
+    meta(name="keywords" content="Google Forms,Web,html,translation,tool")
+    meta(property="fb:app_id" content="270660792981320")
+  body
+    main
+      article
+        img.logo(src="../assets/logo.svg", alt="")
+        h1
+          img(src="../assets/reform.svg", alt="Reform")
+        h2 
+          a(href="https://docs.google.com/forms/u/0/", target="_blank") Google Forms
+          |  at your disposal
+        form(action="")
+          input(type="text" name="" placeholder="Enter your Google Form URL" required="" pattern="^https://docs.google.com.*?(viewform|edit)")
+          progress(value="0", max="100")
+          button Reform
+        #result
+        #description
+          h3
+            img(src="../assets/about.svg", alt="About Reform")
+          hr
+          p
+            | The Google Forms integration feature allows you to connect your website to your forms seamlessly.<br />
+            | In order to work together, you need to look up the field IDs, and this tool can automatically extract the field IDs and convert them into generic HTML.
+          h3
+            img(src="../assets/howtouse.svg", alt="How to use")
+          hr
+          p Paste the URL of the Google Form and then press the "Reform" button.
+          h3
+            img(src="../assets/history.svg", alt="History")
+          hr
+          p
+            span 2020.8.7
+            | release
+        .poweredby
+          a(href="https://calil.jp", title="カーリル")
+            img(src="../assets/calil.svg", alt="Powered by カーリル")
+    nav.side
+      div
+          a(href="https://calil.jp") Powered by Calil inc.
+      div 
+          a(href="javascript:window.scrollTo({top: 0, behavior: 'smooth'});") BACK TO TOP
+    script(src="../js/index.js")

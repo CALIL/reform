@@ -7,7 +7,44 @@ html(lang="js")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="index.css")
+    link(rel="alternate" href="https://reform.calil.dev/en/" hreflang="en-US")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="ja-JP")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="x-default")
+    meta(name="description" content="Googleフォームを自由に。")
+    meta(property="og:type" content="website")
+    meta(property="og:site_name" content="Reform")
+    meta(property="og:locale" content="ja_JP")
+    meta(meta="" property="og:type" content="website")
+    meta(property="og:description" content="Googleフォームを自由に。")
+    meta(property="og:title" content="Reform")
+    meta(property="og:url" content="https://reform.calil.dev")
+    meta(property="og:image" content="https://reform.calil.dev/assets/reform.svg")
+    meta(name="keywords" content="Googleフォーム,Web,html,変換")
+    meta(property="fb:app_id" content="270660792981320")
   body
+    style.
+      .englishNavigation {
+        display: none;
+        padding: 1rem;
+        font-size: 2rem;
+        text-align: center;
+        background-color: #ffffff;
+      }
+      .englishNavigation a {
+        color: #00349B;
+        font-weight: bold;
+      }
+    .englishNavigation
+      | Welcome to Reform.
+      br
+      a(href="./en/") Click here
+      |  to view English website.
+    script.
+      const language = (window.navigator.languages && window.navigator.languages[0]) ||
+            window.navigator.language ||
+            window.navigator.userLanguage ||
+            window.navigator.browserLanguage;
+      if (language !== 'ja') document.querySelector('.englishNavigation').style.display = 'block';
     main
       article
         img.logo(src="./assets/logo.svg", alt="")
