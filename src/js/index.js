@@ -2,6 +2,7 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     event.preventDefault();
     document.querySelector('form button').disabled = true;
     let url = document.querySelector('form input').value;
+    document.querySelector('form').setAttribute('data-url', url);
     console.log(url)
     if (!url.match(/^https:\/\/docs\.google.com.*?(viewform|edit)/)) {
         alert('urlが正しくありません。GoogleフォームのURLを入れてください。')
@@ -12,11 +13,12 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     console.log(url)
     let percent = 10;
     let timer = setInterval(() => {
-        document.getElementById('result').innerHTML = '<progress value="' + percent + '" max="100">' + percent + ' %</progress>';
-        percent += 2;
-    }, 100);
+        document.querySelector('form progress').value = percent;
+        percent += 1;
+    }, 40);
     const result = await fetch(url).then((r) => r.json());
     clearInterval(timer);
+    document.querySelector('form progress').value = 100;
     console.log(result)
     const table = document.createElement('table');
     table.className = 'active';
@@ -45,5 +47,6 @@ ${inputs.join('\n')}
 <button type="submit" name="button">送信</button>
 </form>`
     document.getElementById('result').appendChild(textarea);
+    document.querySelector('form progress').value = 0;
     document.querySelector('form button').disabled = false;
 });
