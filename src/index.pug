@@ -64,7 +64,7 @@ html(lang="js")
           button Reform
         #result
         #description
-          h3 About Reform
+          h3 About
           hr
           p
             | Googleフォームは事前入力機能により、外部からパラメーターを受け渡すことができます。<br />
@@ -80,15 +80,13 @@ html(lang="js")
             | 公開
           h3 Share
           hr
-          p
-            a.hatena-bookmark-button(href="https://b.hatena.ne.jp/entry/" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加")
-            img(src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;")
-            script(type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async")
-            a.twitter-share-button(href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false") Tweet
-            script(async="" src="https://platform.twitter.com/widgets.js" charset="utf-8")
-            #fb-root
-            script(async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v8.0&appId=176828049042806&autoLogAppEvents=1" nonce="BSsnNuB8")
-            .fb-like(data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true")
+          ul
+            li
+              a.hatena-bookmark-button(href="https://b.hatena.ne.jp/entry/" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加")
+            li
+              script(type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async")
+              a.twitter-share-button(href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-show-count="false") Tweet
+              script(async="" src="https://platform.twitter.com/widgets.js" charset="utf-8")
 
         .poweredby
           a(href="https://calil.jp", title="カーリル")
