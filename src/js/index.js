@@ -57,6 +57,7 @@ const reform = async (url) => {
         }
     });
 
+    const submitText = (location.pathname === '/en/') ? 'submit' : '送信';
     const createTextarea = (method, endpoint) => {
         const textarea = document.createElement('textarea');
         textarea.addEventListener('click', () => textarea.select());
@@ -71,7 +72,7 @@ const reform = async (url) => {
     
         textarea.value = `<form action="${result.action.replace('formResponse', endpoint)}" method="${method}">
 ${inputs.join('\n')}
-    <button type="submit">送信</button>
+    <button>${submitText}</button>
 </form>`
         return textarea;
     }
