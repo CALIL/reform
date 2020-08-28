@@ -84,7 +84,7 @@ ${inputs.join('\n')}
     const li1 = document.createElement('li')
     const li2 = document.createElement('li')
     const li3 = document.createElement('li')
-    li1.innerHTML = 'PRE-FIL';
+    li1.innerHTML = 'PRE-FILL';
     li1.className = 'tab1 active';
     li2.innerHTML = 'POST';
     li2.className = 'tab2';
