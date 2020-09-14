@@ -2,6 +2,18 @@
 
 https://reform.calil.dev/
 
+## Develop
+
+```
+npm install
+npm start
+```
+
+## Deploy
+
+Netlify  
+https://app.netlify.com/sites/reform-calil/overview
+
 ## License
 
 The MIT License (MIT)
