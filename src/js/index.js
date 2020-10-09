@@ -60,7 +60,7 @@ const reform = async (url) => {
     const submitText = (location.pathname === '/en/') ? 'submit' : '送信';
     const createTextarea = (method, endpoint) => {
         const textarea = document.createElement('textarea');
-        textarea.addEventListener('focus', () => textarea.select());
+        // textarea.addEventListener('focus', () => textarea.select());
     
         let inputs = [];
         result.comparison.map((item) => {
