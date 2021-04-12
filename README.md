@@ -2,6 +2,8 @@
 
 https://reform.calil.dev/
 
+netlifyでホスティング中
+
 ## Develop
 
 ```
@@ -13,6 +15,9 @@ npm start
 
 Netlify  
 https://app.netlify.com/sites/reform-calil/overview
+
+GithubPages
+https://calil.github.io/reform/
 
 ## License
 
