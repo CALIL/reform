@@ -1,8 +1,8 @@
-# reform [![Netlify Status](https://api.netlify.com/api/v1/badges/45ff58e4-0283-4099-bce0-15535c77e1c8/deploy-status)](https://app.netlify.com/sites/reform-calil/deploys)
+# reform
 
 https://reform.calil.dev/
 
-netlifyでホスティング中
+Cloudflare Pagesでホスティング中
 
 ## Develop
 
@@ -13,11 +13,8 @@ npm start
 
 ## Deploy
 
-Netlify  
-https://app.netlify.com/sites/reform-calil/overview
-
-GithubPages  
-https://calil.github.io/reform/
+Cloudflare Pages  
+https://reform.pages.dev/
 
 ## License
 
