@@ -1,6 +1,8 @@
-# CloudFunctionNodeTemplate
+# CloudFunction Reform
 
-nodeランタイムのCloudFunctionを作るためのテンプレート
+フォームのフェッチ・解析のAPIに使用
+
+https://console.cloud.google.com/functions/details/asia-northeast1/reform?project=libmuteki2
 
 
 ## develop

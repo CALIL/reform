@@ -12,7 +12,7 @@ const reform = async (url) => {
 
     url = url.replace('edit', 'viewform').trim();
     history.pushState(null,null,location.pathname+'?url='+encodeURIComponent(url));
-    url = 'https://asia-northeast1-calil-sandbox.cloudfunctions.net/reform?url=' + encodeURIComponent(url);
+    url = 'https://asia-northeast1-libmuteki2.cloudfunctions.net/reform?url=' + encodeURIComponent(url);
 
     let percent = 10;
     let timer = setInterval(() => {

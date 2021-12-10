@@ -16,6 +16,13 @@ npm start
 Cloudflare Pages  
 https://reform.pages.dev/
 
+
+## CloudFunctions
+
+フォームのフェッチ・解析のAPIに使用
+
+https://console.cloud.google.com/functions/details/asia-northeast1/reform?project=libmuteki2
+
 ## License
 
 The MIT License (MIT)
