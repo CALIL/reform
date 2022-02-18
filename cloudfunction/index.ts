@@ -2,7 +2,7 @@ exports.reform = async (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Allow-Methods', 'GET, HEAD');
     const url = req.query.url
-    if (!url.match(/^https:\/\/docs.google.com.*?viewform/)) {
+    if (!url.match(/^https:\/\/docs.google.com.*?viewform|https:\/\/forms\.gle\/.*?/)) {
         res.status(500).send('URLが正しくありません。').end();
         return;
     }

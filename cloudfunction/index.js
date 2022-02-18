@@ -44,7 +44,7 @@ exports.reform = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                 res.set('Access-Control-Allow-Origin', '*');
                 res.set('Access-Control-Allow-Methods', 'GET, HEAD');
                 url = req.query.url;
-                if (!url.match(/^https:\/\/docs.google.com.*?viewform/)) {
+                if (!url.match(/^https:\/\/docs.google.com.*?viewform|https:\/\/forms\.gle\/.*?/)) {
                     res.status(500).send('URLが正しくありません。').end();
                     return [2 /*return*/];
                 }
