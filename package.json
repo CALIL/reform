@@ -18,8 +18,7 @@
     "watch:js": "chokidar \"src/**/*.js\" -c \"npm run build:copy:js\"",
     "build:copy:assets": "npx cpx \"src/assets/**/*\" build/assets/",
     "build:copy:js": "npx cpx \"src/js/**/*\" build/js/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npx npm-force-resolutions"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
