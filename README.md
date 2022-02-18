@@ -16,6 +16,10 @@ npm start
 Cloudflare Pages  
 https://reform.pages.dev/
 
+ビルドに使うnode.jsのバージョン指定は、.node_version で行う  
+
+Cloudflare PagesでNode.jsのバージョンを指定する
+https://dev.classmethod.jp/articles/cloudflare-pages-node-version/
 
 ## CloudFunctions
 
