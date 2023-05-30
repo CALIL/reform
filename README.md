@@ -27,6 +27,10 @@ https://dev.classmethod.jp/articles/cloudflare-pages-node-version/
 
 https://console.cloud.google.com/functions/details/asia-northeast1/reform?project=libmuteki2
 
+## Cloudflare Analytics
+
+https://dash.cloudflare.com/9f2a842113dbb9618c3d37c24fa23af4/web-analytics/overview?siteTag~in=febe2aa8da7c43a78754bef02a144544
+
 ## License
 
 The MIT License (MIT)
