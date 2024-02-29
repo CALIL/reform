@@ -56,10 +56,7 @@ exports.reform = function (req, res) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); };
-// import fetch from 'node-fetch';
 var jsdom_1 = require("jsdom");
-// const jsdom = require('jsdom')
-// const { JSDOM } = jsdom;
 var main = function (url) { return __awaiter(void 0, void 0, void 0, function () {
     var res, html, dom, document, form, action, paramNodes, params, comparison, data;
     return __generator(this, function (_a) {
