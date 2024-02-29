@@ -12,18 +12,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^16.3.0"
+    "jsdom": "^24.0.0"
   },
   "devDependencies": {
-    "@google-cloud/functions-framework": "^1.6.0",
-    "@types/jsdom": "^16.2.3",
-    "@types/node": "^14.0.23",
-    "@types/node-fetch": "^2.5.7",
-    "@typescript-eslint/eslint-plugin": "^3.6.1",
-    "@typescript-eslint/parser": "^3.6.1",
-    "eslint": "^7.5.0",
-    "ts-node": "^8.10.2",
+    "@google-cloud/functions-framework": "^3.3.0",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.22",
+    "@types/node-fetch": "^2.6.11",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "ts-node": "^10.9.2",
     "tslint": "^6.1.2",
-    "typescript": "^3.9.7"
+    "typescript": "^5.3.3"
   }
 }
