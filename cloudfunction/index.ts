@@ -10,10 +10,7 @@ exports.reform = async (req, res) => {
     res.send(data);
 };
 
-import fetch from 'node-fetch';
-const jsdom = require('jsdom')
-
-const { JSDOM } = jsdom;
+import { JSDOM } from 'jsdom';
 
 const main = async (url: string) => {
 

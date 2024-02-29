@@ -56,20 +56,21 @@ exports.reform = function (req, res) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); };
-var node_fetch_1 = require("node-fetch");
-var jsdom = require('jsdom');
-var JSDOM = jsdom.JSDOM;
+// import fetch from 'node-fetch';
+var jsdom_1 = require("jsdom");
+// const jsdom = require('jsdom')
+// const { JSDOM } = jsdom;
 var main = function (url) { return __awaiter(void 0, void 0, void 0, function () {
     var res, html, dom, document, form, action, paramNodes, params, comparison, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, node_fetch_1["default"](url)];
+            case 0: return [4 /*yield*/, fetch(url)];
             case 1:
                 res = _a.sent();
                 return [4 /*yield*/, res.text()];
             case 2:
                 html = _a.sent();
-                dom = new JSDOM(html);
+                dom = new jsdom_1.JSDOM(html);
                 document = dom.window.document;
                 form = document.querySelector('form');
                 action = form.action;
