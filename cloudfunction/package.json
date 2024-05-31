@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^24.0.0"
+    "jsdom": "^24.0.0",
+    "node-fetch": "^3.3.2",
+    "query-string": "^9.0.0"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
@@ -24,6 +26,6 @@
     "eslint": "^8.57.0",
     "ts-node": "^10.9.2",
     "tslint": "^6.1.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.5"
   }
 }

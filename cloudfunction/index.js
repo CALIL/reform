@@ -36,28 +36,83 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reform = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var url, data;
+exports.reform = void 0;
+var reform = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var url, data, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 res.set('Access-Control-Allow-Origin', '*');
                 res.set('Access-Control-Allow-Methods', 'GET, HEAD');
                 url = req.query.url;
-                if (!url.match(/^https:\/\/docs.google.com.*?viewform|https:\/\/forms\.gle\/.*?/)) {
-                    res.status(500).send('URLが正しくありません。').end();
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, main(url)];
+                if (!url.match(/^https:\/\/docs.google.com.*?viewform|https:\/\/forms\.gle\/.*?/)) return [3 /*break*/, 2];
+                return [4 /*yield*/, parseGoogleForm(url)];
             case 1:
                 data = _a.sent();
                 res.send(data);
+                return [3 /*break*/, 5];
+            case 2:
+                if (!url.match(/^https:\/\/forms\.office\.com\//)) return [3 /*break*/, 4];
+                return [4 /*yield*/, parseMSForm(url)];
+            case 3:
+                data = _a.sent();
+                res.send(data);
+                return [3 /*break*/, 5];
+            case 4:
+                res.status(500).send('URLが正しくありません。').end();
                 return [2 /*return*/];
+            case 5: return [2 /*return*/];
         }
     });
 }); };
+exports.reform = reform;
 var jsdom_1 = require("jsdom");
-var main = function (url) { return __awaiter(void 0, void 0, void 0, function () {
+function getQueryString(url) {
+    var params = {};
+    url.split('?')[1].split('&').map(function (param) {
+        var pairs = param.split('=');
+        params[pairs[0]] = decodeURIComponent(pairs[1]);
+    });
+    return params;
+}
+var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, function () {
+    var params, res_1, fromDataUrl, res, json, comparison, data;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                params = getQueryString(url);
+                if (!(typeof params['id'] === undefined)) return [3 /*break*/, 2];
+                return [4 /*yield*/, fetch(url, { method: 'HEAD' })];
+            case 1:
+                res_1 = _a.sent();
+                params = getQueryString(res_1.url);
+                _a.label = 2;
+            case 2:
+                fromDataUrl = "https://forms.office.com/handlers/ResponsePageStartup.ashx?id=".concat(params['id']);
+                return [4 /*yield*/, fetch(fromDataUrl)];
+            case 3:
+                res = _a.sent();
+                return [4 /*yield*/, res.json()];
+            case 4:
+                json = _a.sent();
+                comparison = [];
+                json.data.form.questions.map(function (question) {
+                    if (question.type === 'Question.TextField') {
+                        var result = {};
+                        result[question.title] = question.id;
+                        comparison.push(result);
+                    }
+                });
+                data = {
+                    action: 'GET',
+                    params: params,
+                    comparison: comparison
+                };
+                return [2 /*return*/, data];
+        }
+    });
+}); };
+var parseGoogleForm = function (url) { return __awaiter(void 0, void 0, void 0, function () {
     var res, html, dom, document, form, action, paramNodes, params, comparison, data;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -91,14 +146,18 @@ var main = function (url) { return __awaiter(void 0, void 0, void 0, function ()
     });
 }); };
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, _b;
-    return __generator(this, function (_c) {
-        switch (_c.label) {
+    var _a, _b, _c, _d;
+    return __generator(this, function (_e) {
+        switch (_e.label) {
             case 0:
                 _b = (_a = console).log;
-                return [4 /*yield*/, main('https://docs.google.com/forms/d/e/1FAIpQLSfNzaEDWldsbWqS5DQOK2sZCxGbXd6dwLqG5---K-vaBZE2Zw/viewform')];
+                return [4 /*yield*/, parseGoogleForm('https://docs.google.com/forms/d/e/1FAIpQLSfNzaEDWldsbWqS5DQOK2sZCxGbXd6dwLqG5---K-vaBZE2Zw/viewform')];
             case 1:
-                _b.apply(_a, [_c.sent()]);
+                _b.apply(_a, [_e.sent()]);
+                _d = (_c = console).log;
+                return [4 /*yield*/, parseMSForm('https://forms.office.com/Pages/ResponsePage.aspx?id=7WfPbJrphEGmDEOVvJK_g7O-ItJsl5VOqIc2WNyhCw1UOUcwMlVDNEJUVEZXTTVaNlJRWjBWWDJFMS4u')];
+            case 2:
+                _d.apply(_c, [_e.sent()]);
                 return [2 /*return*/];
         }
     });
