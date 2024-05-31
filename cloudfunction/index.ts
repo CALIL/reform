@@ -42,7 +42,7 @@ const parseMSForm = async (url: string) => {
         }
     })
     const data = {
-        action: 'GET',
+        action: `https://forms.office.com/Pages/ResponsePage.aspx?id=${params['id']}`,
         params: params,
         comparison: comparison
     }

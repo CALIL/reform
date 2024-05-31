@@ -104,7 +104,7 @@ var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, func
                     }
                 });
                 data = {
-                    action: 'GET',
+                    action: "https://forms.office.com/Pages/ResponsePage.aspx?id=".concat(params['id']),
                     params: params,
                     comparison: comparison
                 };
