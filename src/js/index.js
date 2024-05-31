@@ -67,7 +67,7 @@ const reform = async (url) => {
             for (key in item) {
                 // MS Formの場合は、IDをvalueに入れる
                 if (key === 'MSFormId') {
-                    inputs.push(`    <input id="${item[key]}" type="hidden" name="${item[key]}" value="${item[key]}">`)
+                    inputs.push(`    <input id="id" type="hidden" name="${item[key]}" value="${item[key]}">`)
                 } else {
                     inputs.push(`    <label for="${item[key]}">${key}</label>
     <input id="${item[key]}" type="text" name="${item[key]}">`)
