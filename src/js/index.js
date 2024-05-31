@@ -65,8 +65,14 @@ const reform = async (url) => {
         let inputs = [];
         result.comparison.map((item) => {
             for (key in item) {
-                inputs.push(`    <label for="${item[key]}">${key}</label>
+                // MS Formの場合は、IDをvalueに入れる
+                if (key === 'MSFormId') {
+                    inputs.push(`    <label for="${item[key]}">${key}</label>
+    <input id="${item[key]}" type="text" name="${item[key]}" value="${item[key]}">`)
+                } else {
+                    inputs.push(`    <label for="${item[key]}">${key}</label>
     <input id="${item[key]}" type="text" name="${item[key]}">`)
+                }
             }
         });
     

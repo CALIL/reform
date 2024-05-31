@@ -33,7 +33,7 @@ const parseMSForm = async (url: string) => {
     const fromDataUrl = `https://forms.office.com/handlers/ResponsePageStartup.ashx?id=${params['id']}`
     const res = await fetch(fromDataUrl)
     const json:any = await res.json();
-    const comparison:any = []
+    const comparison:any = [{'MSFormId': params['id']}]
     json.data.form.questions.map((question) => {
         if (question.type === 'Question.TextField') {
             const result = {}
@@ -42,7 +42,7 @@ const parseMSForm = async (url: string) => {
         }
     })
     const data = {
-        action: `https://forms.office.com/Pages/ResponsePage.aspx?id=${params['id']}`,
+        action: `https://forms.office.com/Pages/ResponsePage.aspx`,
         params: params,
         comparison: comparison
     }

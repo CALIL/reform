@@ -95,7 +95,7 @@ var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, func
                 return [4 /*yield*/, res.json()];
             case 4:
                 json = _a.sent();
-                comparison = [];
+                comparison = [{ 'MSFormId': params['id'] }];
                 json.data.form.questions.map(function (question) {
                     if (question.type === 'Question.TextField') {
                         var result = {};
@@ -104,7 +104,7 @@ var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, func
                     }
                 });
                 data = {
-                    action: "https://forms.office.com/Pages/ResponsePage.aspx?id=".concat(params['id']),
+                    action: "https://forms.office.com/Pages/ResponsePage.aspx",
                     params: params,
                     comparison: comparison
                 };
