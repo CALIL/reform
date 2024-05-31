@@ -13,6 +13,8 @@ npm start
 
 ## Deploy
 
+コミットすると自動的に展開される
+
 Cloudflare Pages  
 https://reform.pages.dev/
 
