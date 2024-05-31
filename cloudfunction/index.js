@@ -95,7 +95,7 @@ var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, func
                 return [4 /*yield*/, res.json()];
             case 4:
                 json = _a.sent();
-                comparison = [{ 'MSFormId': params['id'] }];
+                comparison = [{ 'MSFormsId': params['id'] }];
                 json.data.form.questions.map(function (question) {
                     if (question.type === 'Question.TextField') {
                         var result = {};
