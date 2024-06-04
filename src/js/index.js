@@ -103,6 +103,9 @@ ${inputs.join('\n')}
     li1.className = 'tab1 active';
     li2.innerHTML = 'POST';
     li2.className = 'tab2';
+    if (IS_MS_FORM) {
+        li2.style.display = 'none';
+    }
     li3.innerHTML = 'DETAIL';
     li3.className = 'tab3';
     const clickTab = (event) => {
