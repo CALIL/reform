@@ -34,6 +34,7 @@ const reform = async (url) => {
     document.querySelector('form progress').value = 100;
     document.getElementById('result').innerHTML = '';
 
+    let IS_MS_FORM = false;
    
     const table = document.createElement('table');
     // const tr = document.createElement('tr');
@@ -46,9 +47,14 @@ const reform = async (url) => {
     // table.appendChild(tr);
     result.comparison.map((item) => {
         for (key in item) {
+            if (key === 'MSFormsId') {
+                IS_MS_FORM = true;
+                continue;
+            }
             const tr = document.createElement('tr');
             const td1 = document.createElement('td');
             const td2 = document.createElement('td');
+            td1.className = 'id';
             td1.innerHTML = item[key];
             td2.innerHTML = key;
             tr.appendChild(td1);
@@ -66,6 +72,7 @@ const reform = async (url) => {
         result.comparison.map((item) => {
             for (key in item) {
                 // MS Formの場合は、IDをvalueに入れる
+                // In the case of MS Form, put the ID in the value
                 if (key === 'MSFormsId') {
                     inputs.push(`    <input id="id" type="hidden" name="id" value="${item[key]}">`)
                 } else {
@@ -83,7 +90,10 @@ ${inputs.join('\n')}
     }
     const textarea1 = createTextarea('GET', 'viewform');
     textarea1.className = 'active';
-    const textarea2 = createTextarea('POST', 'formResponse');
+    let textarea2 = document.createElement('textarea');
+    if (!IS_MS_FORM) {
+        textarea2 = createTextarea('POST', 'formResponse');
+    }
 
     const ul = document.createElement('ul')
     const li1 = document.createElement('li')
