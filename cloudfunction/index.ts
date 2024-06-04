@@ -35,11 +35,12 @@ const parseMSForm = async (url: string) => {
     const json:any = await res.json();
     const comparison:any = [{'MSFormsId': params['id']}]
     json.data.form.questions.map((question) => {
-        if (question.type === 'Question.TextField') {
+        // if (question.type === 'Question.TextField') {
             const result = {}
-            result[question.title] = question.id
+            const title = question.type === 'Question.Choice' ? question.title + ' (選択肢)' : question.title
+            result[title] = question.id
             comparison.push(result)
-        }
+        // }
     })
     const data = {
         action: `https://forms.office.com/Pages/ResponsePage.aspx`,

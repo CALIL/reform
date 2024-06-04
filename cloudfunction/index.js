@@ -97,11 +97,12 @@ var parseMSForm = function (url) { return __awaiter(void 0, void 0, void 0, func
                 json = _a.sent();
                 comparison = [{ 'MSFormsId': params['id'] }];
                 json.data.form.questions.map(function (question) {
-                    if (question.type === 'Question.TextField') {
-                        var result = {};
-                        result[question.title] = question.id;
-                        comparison.push(result);
-                    }
+                    // if (question.type === 'Question.TextField') {
+                    var result = {};
+                    var title = question.type === 'Question.Choice' ? question.title + ' (選択肢)' : question.title;
+                    result[title] = question.id;
+                    comparison.push(result);
+                    // }
                 });
                 data = {
                     action: "https://forms.office.com/Pages/ResponsePage.aspx",
