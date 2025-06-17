@@ -5,7 +5,7 @@ export const reform = async (req, res) => {
     if (url.match(/^https:\/\/docs.google.com.*?viewform|https:\/\/forms\.gle\/.*?/)) {
         const data = await parseGoogleForm(url)
         res.send(data);
-    } else if (url.match(/^https:\/\/forms\.office\.com\//)) {
+    } else if (url.match(/^https:\/\/forms\.office\.com\//) || url.match(/^https:\/\/forms\.cloud\.microsoft\.com\//)) {
         const data = await parseMSForm(url)
         res.send(data);
     } else {
