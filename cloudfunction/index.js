@@ -52,7 +52,7 @@ var reform = function (req, res) { return __awaiter(void 0, void 0, void 0, func
                 res.send(data);
                 return [3 /*break*/, 5];
             case 2:
-                if (!(url.match(/^https:\/\/forms\.office\.com\//) || url.match(/^https:\/\/forms\.cloud\.microsoft\.com\//))) return [3 /*break*/, 4];
+                if (!(url.match(/^https:\/\/forms\.office\.com\//) || url.match(/^https:\/\/forms\.cloud\.microsoft\//))) return [3 /*break*/, 4];
                 return [4 /*yield*/, parseMSForm(url)];
             case 3:
                 data = _a.sent();
