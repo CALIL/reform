@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all clean build:sass build:copy:assets build:copy:js watch -p",
+    "start": "npm-run-all clean build:sass build:copy:assets build:copy:js build:pug watch -p",
     "clean": "rimraf build",
     "watch": "concurrently \"npm run watch:pug\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run watch:browser-sync\"",
     "watch:browser-sync": "browser-sync start --config ./bs-config.js",
