@@ -26,10 +26,18 @@ https://forms.office.com/Pages/ResponsePage.aspx?id=7WfPbJrphEGmDEOVvJK_g9_p78ec
 Cloudflare Pages  
 https://reform.pages.dev/
 
-ビルドに使うnode.jsのバージョン指定  
+### ビルドに使う Node.js のバージョン
 
-Cloudflare PagesでNode.jsのバージョンを指定する
-https://dev.classmethod.jp/articles/cloudflare-pages-node-version/
+リポジトリの `.node-version`（と `package.json` の `engines.node`）で固定しています。
+Cloudflare Pages はこのファイルを読んで Node を切り替えます。
+
+**Build Image は v3 を使ってください。** v1 は Node 12.18.0 が既定で、
+ビルドに使う npm-run-all2 / cpx2 / sass などが動きません。
+（設定 → ビルド → Production と Preview の両方で v3 を選択）
+
+> Build Image v1 は 2026年9月15日に廃止されます。
+
+依存を更新して Node の要求が上がったときは `.node-version` も合わせて上げてください。
 
 ## CloudFunctions
 
