@@ -1,65 +1,39 @@
 {
-  "name": "template",
+  "name": "reform",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "フォームの入力欄IDを調べるツール",
   "scripts": {
-    "start": "npm-run-all clean build:sass build:copy:assets build:copy:js build:pug watch -p",
-    "clean": "rimraf build",
-    "watch": "concurrently \"npm run watch:pug\" \"npm run watch:sass\" \"npm run watch:js\" \"npm run watch:browser-sync\"",
-    "watch:browser-sync": "browser-sync start --config ./bs-config.js",
+    "start": "npm run build && npm-run-all -p watch:* serve",
+    "serve": "wrangler pages dev build",
+    "clean": "node -e \"require('node:fs').rmSync('build',{recursive:true,force:true})\"",
     "watch:sass": "npm run build:sass -- --watch",
-    "watch:sass2": "chokidar \"./src/**/*.sass\" --command \"npm run build:sass && npm run build:autoprefixer\"",
     "watch:pug": "npm run build:pug -- --watch --pretty",
+    "watch:js": "npm run build:copy:js -- --watch",
     "build": "npm-run-all clean build:** -s",
     "build:sass": "sass ./src/index.sass ./build/index.css --style=compressed",
-    "//build:autoprefixer": "postcss ./build/index.css -o ./build/index.css --config ./postcss.config.js",
     "build:pug": "pug -O pug_env.js src/ --out ./build/",
-    "watch:js": "chokidar \"src/**/*.js\" -c \"npm run build:copy:js\"",
     "build:copy:assets": "cpx \"src/assets/**/*\" build/assets/",
     "build:copy:js": "cpx \"src/js/**/*\" build/js/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test"
   },
   "engines": {
     "node": ">=22.22.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deguchi/template.git"
+    "url": "git+https://github.com/CALIL/reform.git"
   },
-  "author": "",
-  "license": "",
-  "bugs": {
-    "url": "https://github.com/deguchi/template/issues"
-  },
-  "homepage": "https://github.com/deguchi/template#readme",
+  "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "browser-sync": "^3.0.4",
-    "chokidar-cli": "^3.0.0",
-    "concurrently": "^10.0.3",
     "cpx2": "^9.0.0",
     "npm-run-all2": "^9.0.3",
-    "postcss": "^8.4.38",
-    "postcss-cli": "^11.0.0",
-    "postcss-scss": "^4.0.9",
-    "rimraf": "^6.1.3",
-    "sass": "^1.77.4"
-  },
-  "dependencies": {
-    "pug": "^3.0.4",
-    "pug-cli": "1.0.0-alpha6"
+    "pug-cli": "1.0.0-alpha6",
+    "sass": "^1.77.4",
+    "wrangler": "^4.118.0"
   },
   "overrides": {
-    "minimist": "^1.2.8",
     "pug-cli": {
       "pug": "^3.0.4"
-    },
-    "browser-sync": {
-      "immutable": "^4.3.9",
-      "browser-sync-ui": {
-        "immutable": "^4.3.9"
-      }
     }
   }
 }

@@ -15,9 +15,7 @@ updates:
   # npm
   # ---------------------------------------------------------------------------
   - package-ecosystem: "npm"
-    directories:
-      - "/"
-      - "/cloudfunction"
+    directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -34,6 +32,33 @@ updates:
       semver-major-days: 30
     groups:
       npm-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # ---------------------------------------------------------------------------
+  # GitHub Actions
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(deps)"
+    # github-actions では semver-major-days は使えない
+    cooldown:
+      default-days: 7
+    groups:
+      actions-minor-patch:
         patterns:
           - "*"
         update-types:

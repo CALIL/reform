@@ -1,0 +1,10 @@
+{
+  "url": "https://docs.google.com/forms/d/e/1FAIpQLSe7t2OIId9cpX7mcYnOYnz7Z9K9AOlMhSV7OdY8Xfqg9YkNdw/viewform",
+  "action": "https://docs.google.com/forms/d/e/1FAIpQLSe7t2OIId9cpX7mcYnOYnz7Z9K9AOlMhSV7OdY8Xfqg9YkNdw/formResponse",
+  "rawDataParams": [
+    "%.@.[525299087,&quot;本のなまえ&quot;,null,1,[[979612543,null,true,null,null,null,null,null,null,null,[]]],null,null,null,null,null,null,[null,&quot;本のなまえ&quot;]],&quot;i1&quot;,&quot;i2&quot;,&quot;i3&quot;,false,&quot;i4&quot;]",
+    "%.@.[1773182962,&quot;ISBN&quot;,null,0,[[1917292338,null,false,null,[[1,9,[&quot;&quot;]]],null,null,null,null,null,[]]],null,null,null,null,null,null,[null,&quot;ISBN&quot;]],&quot;i6&quot;,&quot;i7&quot;,&quot;i8&quot;,false,&quot;i9&quot;]",
+    "%.@.[553713529,&quot;学年&quot;,null,3,[[2062138030,[[&quot;選択肢 1&quot;]],false,null,null,null,null,null,false,null,[]]],null,null,null,null,null,null,[null,&quot;学年&quot;]],&quot;i11&quot;,&quot;i12&quot;,&quot;i13&quot;,false,&quot;i14&quot;]",
+    "%.@.[189171540,&quot;名前&quot;,null,0,[[1994445067,null,true,null,null,null,null,null,null,null,[]]],null,null,null,null,null,null,[null,&quot;名前&quot;]],&quot;i16&quot;,&quot;i17&quot;,&quot;i18&quot;,false,&quot;i19&quot;]"
+  ]
+}
