@@ -1,0 +1,30 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title ページが見つかりません - Reform
+    meta(name="robots" content="noindex")
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="https://use.typekit.net/oix0zzk.css")
+    //- このページはどの階層のパスに対しても返されるため、
+      アセットの参照は相対パスではなく絶対パスにしている。
+    link(rel="stylesheet", href="/index.css")
+    link(rel="alternate" href="https://reform.calil.dev/en/" hreflang="en-US")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="ja-JP")
+  body
+    main
+      article
+        img.logo(src="/assets/logo.svg", alt="")
+        h1 404
+        h2 ページが見つかりませんでした
+        #description
+          h3 Not Found
+          hr
+          p
+            | お探しのページは見つかりませんでした。URLが変更されたか、削除された可能性があります。
+            br
+            a(href="/") Reform のトップページへ
+        .poweredby
+          a(href="https://calil.jp", title="カーリル")
+            img(src="/assets/calil.svg", alt="Powered by カーリル")
