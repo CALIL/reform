@@ -54,9 +54,9 @@ updates:
       - "github-actions"
     commit-message:
       prefix: "chore(deps)"
+    # github-actions では semver-major-days は使えない
     cooldown:
       default-days: 7
-      semver-major-days: 30
     groups:
       actions-minor-patch:
         patterns:
