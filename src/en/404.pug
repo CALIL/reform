@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Page not found - Reform
+    meta(name="robots" content="noindex")
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;700;900&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="https://use.typekit.net/oix0zzk.css")
+    //- このページはどの階層のパスに対しても返されるため、
+      アセットの参照は相対パスではなく絶対パスにしている。
+    link(rel="stylesheet", href="/index.css")
+    link(rel="alternate" href="https://reform.calil.dev/en/" hreflang="en-US")
+    link(rel="alternate" href="https://reform.calil.dev" hreflang="ja-JP")
+  body
+    main
+      article
+        img.logo(src="/assets/logo.svg", alt="")
+        h1 404
+        h2 Page not found
+        #description
+          h3 Not Found
+          hr
+          p
+            | The page you are looking for could not be found. It may have been moved or deleted.
+            br
+            a(href="/en/") Back to Reform
+        .poweredby
+          a(href="https://calil.jp", title="CALIL Inc.")
+            img(src="/assets/calil.svg", alt="Powered by CALIL Inc.")
