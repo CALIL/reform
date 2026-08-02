@@ -11,6 +11,12 @@ npm install
 npm start
 ```
 
+http://localhost:8788/ で開きます。開発サーバは wrangler なので、
+静的ファイルと API を同じところから配信します。
+
+sass / pug / js は変更を監視して自動でビルドしますが、
+ブラウザの自動リロードはないので手で更新してください。
+
 ## Sample Form
 
 Google Form  
@@ -44,7 +50,6 @@ Cloudflare Pages はこのファイルを読んで Node を切り替えます。
 フォームの取得と解析は `functions/api/reform.ts`（Cloudflare Pages Functions）で動いています。
 
 ```
-npm run dev:api   # API ごとローカルで動かす（npm start では Functions が動きません）
 npm test
 ```
 
