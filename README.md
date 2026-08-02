@@ -39,11 +39,44 @@ Cloudflare Pages はこのファイルを読んで Node を切り替えます。
 
 依存を更新して Node の要求が上がったときは `.node-version` も合わせて上げてください。
 
-## CloudFunctions
+## API
 
-フォームのフェッチ・解析のAPIに使用
+フォームを取得して、各項目に対応する入力欄の ID を返します。
+
+```
+GET /api/reform?url=<フォームのURL>
+```
+
+Cloudflare Pages Functions（`functions/api/reform.ts`）で動いています。
+HTML の解析には Cloudflare 標準の HTMLRewriter を使うので、依存はありません。
+
+### ローカルで動かす
+
+```
+npm run dev:api
+```
+
+http://127.0.0.1:8788/api/reform?url=... で叩けます。
+`npm start` の browser-sync では Functions が動かないので、
+API を触るときはこちらを使ってください。
+
+### テスト
+
+```
+npm test
+```
+
+HTMLRewriter は Node では動かないので、テストで確かめているのは
+フォームの中身を解釈する側の関数だけです。
+HTML から属性を拾えるかどうかは `npm run dev:api` で実際のフォームを叩いて確かめます。
+
+### 旧 API（GCP Cloud Functions）
+
+移行前はこちらで動いていました。切り替え後の様子を見るため、しばらく残してあります。
 
 https://console.cloud.google.com/functions/details/asia-northeast1/reform?project=libmuteki2
+
+問題が出なければ `cloudfunction/` ごと消して、GCP の関数も止めてください。
 
 ## Cloudflare Analytics
 

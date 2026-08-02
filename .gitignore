@@ -105,3 +105,6 @@ dist
 
 
 build/
+
+# wrangler pages dev のローカル状態
+.wrangler/
