@@ -173,7 +173,7 @@ async function parseMsForm(url: string): Promise<Parsed> {
     }
 
     const res = await fetchForm(
-        'https://forms.office.com/handlers/ResponsePageStartup.ashx'
+        'https://forms.cloud.microsoft/handlers/ResponsePageStartup.ashx'
         + `?id=${encodeURIComponent(params['id'])}`
     );
     if (!res.ok) {
@@ -190,7 +190,9 @@ async function parseMsForm(url: string): Promise<Parsed> {
     }
 
     return {
-        action: 'https://forms.office.com/Pages/ResponsePage.aspx',
+        // forms.office.com は事前入力の値に日本語が入ると 500 を返すので、
+        // 組み立てる action は新ホストに固定する
+        action: 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx',
         params,
         comparison
     };
