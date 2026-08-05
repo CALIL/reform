@@ -1,31 +1,3 @@
-=mobile
-  @media screen and (max-width: 768px)
-    @content
-
-=tablet
-  @media screen and (max-width: 992px)
-    @content
-
-=pc
-  @media screen and (max-width: 1180px)
-    @content
-
-
-*
-    box-sizing: border-box
-    margin: 0
-    padding: 0
-
-html, body
-    width: 100%
-    height: 100%
-    font-family: "Noto Sans JP", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "Noto Sans JP", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif
-
-body
-  height: 100%
-  background-color: #0041C3
-  background-image: url(./assets/pattern.svg)
-  background-position: center top
-
-@import "sass/index"
-@import "sass/side"
+@use 'sass/base'
+@use 'sass/index'
+@use 'sass/side'
