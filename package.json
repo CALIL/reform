@@ -7,11 +7,11 @@
     "serve": "wrangler pages dev build",
     "clean": "node -e \"require('node:fs').rmSync('build',{recursive:true,force:true})\"",
     "watch:sass": "npm run build:sass -- --watch",
-    "watch:pug": "npm run build:pug -- --watch --pretty",
+    "watch:html": "npm run build:copy:html -- --watch",
     "watch:js": "npm run build:copy:js -- --watch",
     "build": "npm-run-all clean build:** -s",
     "build:sass": "sass ./src/index.sass ./build/index.css --style=compressed",
-    "build:pug": "pug -O pug_env.js src/ --out ./build/",
+    "build:copy:html": "cpx \"src/**/*.html\" build/",
     "build:copy:assets": "cpx \"src/assets/**/*\" build/assets/",
     "build:copy:js": "cpx \"src/js/**/*\" build/js/",
     "test": "node --test"
@@ -27,14 +27,10 @@
   "devDependencies": {
     "cpx2": "^9.0.0",
     "npm-run-all2": "^9.0.3",
-    "pug-cli": "1.0.0-alpha6",
     "sass": "^1.77.4",
     "wrangler": "^4.118.0"
   },
   "overrides": {
-    "pug-cli": {
-      "pug": "^3.0.4"
-    },
     "miniflare": {
       "undici": "^7.29.0"
     }
