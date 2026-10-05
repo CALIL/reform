@@ -27,8 +27,8 @@
   "devDependencies": {
     "cpx2": "^9.0.3",
     "npm-run-all2": "^9.0.3",
-    "sass": "^1.104.1",
-    "wrangler": "^4.135.0"
+    "sass": "^1.105.0",
+    "wrangler": "^4.142.0"
   },
   "overrides": {
     "miniflare": {
